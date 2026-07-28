@@ -25,6 +25,26 @@ def log_history(expression, result):
     with open("history.txt", "a") as file:
         file.write(f"{expression},{result}\n")
 
+def view_history():
+    with open("history.txt", "r") as file:
+        lines = file.readlines()
+
+    if len(lines) == 0:
+        print("No history yet.")
+    else:
+        print("\n--- Calculation History ---")
+        for line in lines:
+            expression, result = line.strip().split(",")
+            print(f"{expression} = {result}")
+
+def clear_history():
+    confirm = input("Are you sure you want to clear history? (y/n): ")
+    if confirm == "y":
+        with open("history.txt", "w") as file:
+            pass
+        print("History cleared.")
+    else:
+        print("Cancelled.")
 
 def main():
     while True:
@@ -87,6 +107,12 @@ def main():
             except ValueError as e:
                 print(f"Error: {e}")
 
+        elif choice == "7":
+            view_history()
+
+        elif choice == "8":
+            clear_history()
+            
         elif choice == "9":
             print("Goodbye!")
             break
