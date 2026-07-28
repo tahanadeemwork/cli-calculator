@@ -21,6 +21,10 @@ def get_number(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+def log_history(expression, result):
+    with open("history.txt", "a") as file:
+        file.write(f"{expression},{result}\n")
+
 
 def main():
     while True:
@@ -31,18 +35,24 @@ def main():
             a = get_number("Enter first number: ")
             b = get_number("Enter second number: ")
             result = operations.add(a, b)
+            expression = f"{a} + {b}"
+            log_history(expression, result)
             print(f"Result: {result}")
 
         elif choice == "2":
             a = get_number("Enter first number: ")
             b = get_number("Enter second number: ")
             result = operations.subtract(a, b)
+            expression = f"{a} - {b}"
+            log_history(expression, result)
             print(f"Result: {result}")
 
         elif choice == "3":
             a = get_number("Enter first number: ")
             b = get_number("Enter second number: ")
             result = operations.multiply(a, b)
+            expression = f"{a} * {b}"
+            log_history(expression, result)
             print(f"Result: {result}")
 
         elif choice == "4":
@@ -50,6 +60,8 @@ def main():
             b = get_number("Enter second number: ")
             try:
                 result = operations.divide(a, b)
+                expression = f"{a} / {b}"
+                log_history(expression, result)
                 print(f"Result: {result}")
             except ValueError as e:
                 print(f"Error: {e}")
@@ -59,6 +71,8 @@ def main():
             exponent = int(get_number("Enter exponent: "))
             try:
                 result = operations.power(base, exponent)
+                expression = f"{base} ^ {exponent}"
+                log_history(expression, result)
                 print(f"Result: {result}")
             except ValueError as e:
                 print(f"Error: {e}")
@@ -67,6 +81,8 @@ def main():
             n = int(get_number("Enter a number: "))
             try:
                 result = operations.factorial(n)
+                expression = f"{n}!"
+                log_history(expression, result)
                 print(f"Result: {result}")
             except ValueError as e:
                 print(f"Error: {e}")
