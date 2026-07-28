@@ -54,6 +54,23 @@ def main():
             except ValueError as e:
                 print(f"Error: {e}")
 
+        elif choice == "5":
+            base = get_number("Enter base: ")
+            exponent = int(get_number("Enter exponent: "))
+            try:
+                result = operations.power(base, exponent)
+                print(f"Result: {result}")
+            except ValueError as e:
+                print(f"Error: {e}")
+
+        elif choice == "6":
+            n = int(get_number("Enter a number: "))
+            try:
+                result = operations.factorial(n)
+                print(f"Result: {result}")
+            except ValueError as e:
+                print(f"Error: {e}")
+
         elif choice == "9":
             print("Goodbye!")
             break
